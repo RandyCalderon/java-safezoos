@@ -21,3 +21,8 @@ VALUES(1, "V3", "822-290-2093", 1),
       (4, "CU500", "804-200-1023", 2),
       (5, "TU500", "752-300-4020", 1);
 
+INSERT INTO user (username, password, role)
+VALUES("sally", "password", "user"),
+      ("charlie", "password", "user"),
+      ("linus", "password", "user"),
+      ("lucy", "ILuvM4th!", "ADMIN");
