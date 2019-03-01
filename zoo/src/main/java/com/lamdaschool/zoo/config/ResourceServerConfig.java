@@ -28,9 +28,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
                 .authorizeRequests()
                 .antMatchers("/admin/**").access("hasAnyRole('ROLE_ADMIN')")
                 .antMatchers("/users/**").access("hasAnyRole('ROLE_ADMIN')")
-                .antMatchers("/animals/**").access("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_COURSE')")
-                .antMatchers("/zoo/**").access("hasAnyRole('ROLE_ZOO')")
-                .antMatchers("/animals/**").access("hasAnyRole('ROLE_ANIMAL')")
+                .antMatchers("/animals/**").access("hasAnyRole('ROLE_USER', 'ROLE_ANIMAL')")
+                .antMatchers("/zoo/**").access("hasAnyRole('ROLE_USER', 'ROLE_ZOO')")
                 .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
     }
 }

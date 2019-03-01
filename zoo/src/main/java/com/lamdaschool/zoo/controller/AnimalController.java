@@ -5,6 +5,8 @@ import com.lamdaschool.zoo.repository.AnimalRepository;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Secured("ROLE_ADMIN")
 @Api(value = "Animals Endpoint", description = "List all animals and get animal by aname")
 @RestController
 @RequestMapping(value = "/animals", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -30,6 +33,7 @@ public class AnimalController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach can not be found")
     })
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping
     public List<Animal> listAllAnimals() {
         return animalrepos.findAll();

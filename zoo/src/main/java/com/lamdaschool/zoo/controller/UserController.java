@@ -17,19 +17,19 @@ public class UserController
     // private UserService userService;
     private UserRepository userrepos;
 
-    @GetMapping("/users")
+    @GetMapping
     public List<User> listAllUsers()
     {
         return userrepos.findAll();
     }
 
-    @PostMapping("/user")
+    @PostMapping
     public User addNewUser(@RequestBody User newuser) throws URISyntaxException
     {
         return userrepos.save(newuser);
     }
 
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("/{id}")
     public String deleteUserById(@PathVariable long id)
     {
         var foundUser = userrepos.findById(id);

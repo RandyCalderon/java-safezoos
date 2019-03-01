@@ -7,10 +7,12 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Secured("ROLE_ADMIN")
 @RestController
 @RequestMapping(value = "/zoo", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ZooController {
